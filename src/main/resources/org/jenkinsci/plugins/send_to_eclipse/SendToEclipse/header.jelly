@@ -1,0 +1,100 @@
+<j:jelly xmlns:j="jelly:core">
+	<script>
+		(function($) {
+			var eclipseURL = "http://localhost:58642";
+			
+			$(document).ready(function() {
+				// Handler for .ready() called.
+				var request = $.ajax({
+					url : eclipseURL + "/postevent"
+				});
+				request.done(function(data) {
+						$( "#footer" ).prepend( '<span style="padding-right:2em; color:gray"><img src="' +  eclipseURL + '/icon" style="padding-right:2px;"/> <a href="http://cbos.github.io/OpenFromExternalEvent/">Eclipse integration</a> is enabled.</span>' );
+						addSendToEclipse();
+				});
+				request.fail(function(jqXHR, textStatus) {
+						$( "#footer" ).prepend( '<span style="padding-right:2em; color:gray"><a href="http://cbos.github.io/OpenFromExternalEvent/">Eclipse integration</a> is not enabled.</span>' );
+				});
+			});
+			
+			function addSendToEclipse()
+			{
+				//Test Summary page
+				var h1TestResult = $( "h1:contains('Test Result')" );
+				if(h1TestResult.length > 0)
+				{
+					addEclipseForSummarPage()
+				}
+				
+				//Page with single test content
+				var h1Failed = $( "h1:contains('Failed')" );
+				if(h1Failed.length > 0)
+				{
+					addEclipseForTestDetailsPage(h1Failed)
+				}
+			}
+			
+			function addEclipseForSummarPage()
+			{
+				$('a[title="Show details"]').click(function()
+				{
+					//Once the link is clicked the HTML has to be rendered, after that we can add the Eclipse icon
+					window.setTimeout(addEclipseAfterContentLoaded(this), 50);
+				});
+				
+				//Select all links (with class model-link inside) direct after a link with title "Hide details"
+				$('a[title="Hide details"] + a[class="model-link inside"]').each(function() {
+					var element = $(this);
+					appendEclipseImage(element);
+					addPostHandler(element.children().last(), element);
+				});
+			}
+			
+			function addEclipseAfterContentLoaded(element)
+			{
+				return function()
+				{
+					var linksWithStackTrace = $(element).parent().find( "h4 a:contains('Stack Trace')" );
+					if(linksWithStackTrace.length > 0)
+					{
+						var h4Element = linksWithStackTrace.parent();
+						appendEclipseImage(h4Element);
+						addPostHandler(h4Element.children().last(), h4Element.next());
+					}
+				}
+			}
+			
+			function addEclipseForTestDetailsPage(h1Failed)
+			{
+				var paragraphInH1 = h1Failed.next();
+				appendEclipseImage(paragraphInH1);
+				addPostHandler(paragraphInH1.children().last(), paragraphInH1.first());
+
+				var stackTraceElement = $( "h3:contains('Stacktrace')" );
+				if(stackTraceElement.length > 0)
+				{
+					appendEclipseImage(stackTraceElement);
+					addPostHandler(stackTraceElement.children().last(), stackTraceElement.next());
+				}
+			}
+			
+			function appendEclipseImage(element)
+			{
+				element.append('<img src="' +  eclipseURL + '/icon" style="padding-left:2px;cursor: pointer; cursor: hand;" title="Send Stacktrace/testclass to Eclipse" />');
+			}
+			
+			function addPostHandler(element, elementWithContent)
+			{
+				element.click(function( event ) {
+					postToEclipse(elementWithContent.text());
+					return false; //prevent bubble up
+				});
+			}
+			
+			function postToEclipse( text )
+			{
+				$.post( eclipseURL + "/postevent", text );
+			}
+		})(jQuery)
+	</script>
+</j:jelly>
