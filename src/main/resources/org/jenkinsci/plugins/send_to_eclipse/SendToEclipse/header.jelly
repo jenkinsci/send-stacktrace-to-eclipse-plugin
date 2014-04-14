@@ -39,7 +39,7 @@
 				$('a[title="Show details"]').click(function()
 				{
 					//Once the link is clicked the HTML has to be rendered, after that we can add the Eclipse icon
-					window.setTimeout(addEclipseAfterContentLoaded(this), 50);
+					window.setTimeout(addEclipseAfterContentLoaded(this), 100);
 				});
 				
 				//Select all links (with class model-link inside) direct after a link with title "Hide details"
