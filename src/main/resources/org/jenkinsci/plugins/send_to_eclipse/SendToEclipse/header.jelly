@@ -27,7 +27,7 @@
 				}
 				
 				//Page with single test content
-				var h1Failed = $( "h1:contains('Failed')" );
+				var h1Failed = $( "h1:contains('Failed'), h1:contains('Regression')" );
 				if(h1Failed.length > 0)
 				{
 					addEclipseForTestDetailsPage(h1Failed)
