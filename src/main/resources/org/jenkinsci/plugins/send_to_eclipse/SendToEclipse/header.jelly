@@ -39,7 +39,8 @@
 				$('a[title="Show details"]').click(function()
 				{
 					//Once the link is clicked the HTML has to be rendered, after that we can add the Eclipse icon
-					window.setTimeout(addEclipseAfterContentLoaded(this), 100);
+					//Try max 20 attempts, first attempt after 100 millis
+					window.setTimeout(addEclipseAfterContentLoaded(this,20), 100);
 				});
 				
 				//Select all links (with class model-link inside) direct after a link with title "Hide details"
@@ -50,7 +51,7 @@
 				});
 			}
 			
-			function addEclipseAfterContentLoaded(element)
+			function addEclipseAfterContentLoaded(element, iteration)
 			{
 				return function()
 				{
@@ -60,6 +61,13 @@
 						var h4Element = linksWithStackTrace.parent();
 						appendEclipseImage(h4Element);
 						addPostHandler(h4Element.children().last(), h4Element.next());
+					}
+					else
+					{
+						if(iteration != 0) //use this construction as great then or less then symbol cannot be just due to Jenkins
+						{
+							window.setTimeout(addEclipseAfterContentLoaded(element, iteration-1), 100); //next attempt after 100 millis
+						}
 					}
 				}
 			}
