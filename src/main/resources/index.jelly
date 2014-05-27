@@ -2,5 +2,5 @@
   This view is used to render the installed plugins page.
 -->
 <div>
-  This plugin enable the Eclipse integration with the Eclipse <a href="http://cbos.github.io/OpenFromExternalEvent/">OpenFromExternalEvent plugin</a>.
+  This plugin enables you to push a stacktrace to the Eclipse <a href="http://cbos.github.io/OpenFromExternalEvent/">OpenFromExternalEvent plugin</a>.
 </div>
