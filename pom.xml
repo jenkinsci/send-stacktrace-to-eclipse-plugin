@@ -1,45 +1,63 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.jenkins-ci.plugins</groupId>
-    <artifactId>plugin</artifactId>
-    <version>1.554</version><!-- which version of Jenkins is this plugin built against? -->
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.jenkins-ci.plugins</groupId>
+		<artifactId>plugin</artifactId>
+		<version>1.554</version><!-- which version of Jenkins is this plugin built 
+			against? -->
+	</parent>
 
-  <groupId>org.jenkins-ci.plugins</groupId>
-  <artifactId>send-to-eclipse</artifactId>
-  <version>1.3</version>
-  <packaging>hpi</packaging>
-   <name>Jenkins Send to Eclipse plugin</name>
+	<groupId>org.jenkins-ci.plugins</groupId>
+	<artifactId>send-stacktrace-to-eclipse-plugin</artifactId>
+	<version>1.3</version>
+	<packaging>hpi</packaging>
+	<name>Send stacktrace to Eclipse plugin</name>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.jenkins-ci.plugins</groupId>
-      <artifactId>jquery</artifactId>
-      <version>1.7.2-1</version>
-    </dependency>
-  </dependencies>
+	<scm>
+		<connection>scm:git:ssh://github.com/jenkinsci/send-stacktrace-to-eclipse-plugin.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/send-stacktrace-to-eclipse-plugin.git</developerConnection>
+		<url>https://github.com/jenkinsci/send-stacktrace-to-eclipse-plugin</url>
+	</scm>
+	<url>https://wiki.jenkins-ci.org/display/JENKINS/Send+stacktrace+to+eclipse+plugin</url>
 
-  <!-- get every artifact through repo.jenkins-ci.org, which proxies all the artifacts that we need -->
-  <repositories>
-    <repository>
-      <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
-    </repository>
-  </repositories>
+	<developers>
+		<developer>
+			<id>cbos</id>
+			<name>Cees Bos</name>
+			<email>cbos.ec@gmail.com</email>
+		</developer>
+	</developers>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
-    </pluginRepository>
-  </pluginRepositories>
+	<dependencies>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>jquery</artifactId>
+			<version>1.7.2-1</version>
+		</dependency>
+	</dependencies>
 
-  <licenses>
-      <license>
-        <name>MIT license</name>
-        <comments>All source code is under the MIT license.</comments>
-      </license>
-    </licenses>
+	<!-- get every artifact through repo.jenkins-ci.org, which proxies all the 
+		artifacts that we need -->
+	<repositories>
+		<repository>
+			<id>repo.jenkins-ci.org</id>
+			<url>http://repo.jenkins-ci.org/public/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.jenkins-ci.org</id>
+			<url>http://repo.jenkins-ci.org/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<licenses>
+		<license>
+			<name>MIT license</name>
+			<comments>All source code is under the MIT license.</comments>
+		</license>
+	</licenses>
 
 </project>
