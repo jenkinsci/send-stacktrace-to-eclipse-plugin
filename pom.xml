@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.jenkins-ci.plugins</groupId>
 		<artifactId>plugin</artifactId>
-		<version>1.554</version><!-- which version of Jenkins is this plugin built 
+		<version>1.424</version><!-- which version of Jenkins is this plugin built 
 			against? -->
 	</parent>
 
@@ -12,13 +12,13 @@
 	<version>1.5-SNAPSHOT</version>
 	<packaging>hpi</packaging>
 	<name>Send stacktrace to Eclipse plugin</name>
+	<url>http://wiki.jenkins-ci.org/display/JENKINS/Send+stacktrace+to+eclipse+plugin</url>
 
 	<scm>
 		<connection>scm:git:https://github.com/jenkinsci/send-stacktrace-to-eclipse-plugin.git</connection>
 		<developerConnection>scm:git:https://github.com/jenkinsci/send-stacktrace-to-eclipse-plugin.git</developerConnection>
 		<url>https://github.com/jenkinsci/send-stacktrace-to-eclipse-plugin</url>
 	</scm>
-	<url>https://wiki.jenkins-ci.org/display/JENKINS/Send+stacktrace+to+eclipse+plugin</url>
 
 	<developers>
 		<developer>
