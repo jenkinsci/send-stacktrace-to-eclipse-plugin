@@ -9,7 +9,7 @@
 
 	<groupId>org.jenkins-ci.plugins</groupId>
 	<artifactId>send-stacktrace-to-eclipse-plugin</artifactId>
-	<version>1.6-SNAPSHOT</version>
+	<version>1.6</version>
 	<packaging>hpi</packaging>
 	<name>Send stacktrace to Eclipse plugin</name>
 	<url>http://wiki.jenkins-ci.org/display/JENKINS/Send+stacktrace+to+eclipse+plugin</url>
