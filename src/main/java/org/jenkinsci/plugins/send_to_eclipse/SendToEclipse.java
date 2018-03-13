@@ -5,8 +5,5 @@ import hudson.model.PageDecorator;
 
 @Extension(ordinal=5)
 public class SendToEclipse extends PageDecorator {
-	
-	public SendToEclipse() {
-		super(SendToEclipse.class);
-	}
+
 }
